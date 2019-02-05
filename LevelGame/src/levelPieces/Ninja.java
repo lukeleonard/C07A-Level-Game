@@ -1,8 +1,8 @@
+package levelPieces;
 import gameEngine.Drawable;
 import gameEngine.InteractionResult;
 import gameEngine.Moveable;
 import levelPieces.GamePiece;
-
 public class Ninja extends GamePiece implements Moveable {
 	private final static char symbol = 'N';
 
@@ -27,7 +27,10 @@ public class Ninja extends GamePiece implements Moveable {
 
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
-		return InteractionResult.HIT;
+		if(playerLocation == this.getLocation()) {
+			return InteractionResult.HIT;
+		}
+		return InteractionResult.NONE;
 	}
 
 }
