@@ -4,10 +4,12 @@ import gameEngine.GameEngine;
 import gameEngine.InteractionResult;
 import gameEngine.Moveable;
 import levelPieces.GamePiece;
-public class Ninja extends GamePiece implements Moveable {
-	private final static char symbol = 'N';
+import java.util.Random;
+public class GoldenSnitch extends GamePiece implements Moveable {
+	private final static char symbol = 'G';
+	private int speedMultiplier = 1;
 
-	public Ninja(int location) {
+	public GoldenSnitch(int location) {
 		super(symbol, location);
 	}
 
@@ -15,15 +17,18 @@ public class Ninja extends GamePiece implements Moveable {
 	public void move(Drawable[] gameBoard, int playerLocation) {
 		int direction = 0;
 		int saveLocation = this.getLocation();
+		Random rand = new Random();
 		if(playerLocation > this.getLocation()) {
-			direction = 1;
+			direction = rand.nextInt(4) - 2;
 		} else {
-			direction = -1;
+			direction = rand.nextInt(4) - 1;
 		}
-		int tempLanding = (this.getLocation() + 3*direction);
-		
+		int tempLanding = (this.getLocation() + speedMultiplier*direction);
 		tempLanding %= (tempLanding % GameEngine.BOARD_SIZE + GameEngine.BOARD_SIZE);
 		while(gameBoard[tempLanding] != null) {
+			if (direction == 0) {
+				direction = 1;
+			}
 			tempLanding += direction;
 			tempLanding %= (tempLanding % GameEngine.BOARD_SIZE + GameEngine.BOARD_SIZE);
 		}
@@ -36,7 +41,8 @@ public class Ninja extends GamePiece implements Moveable {
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
 		if(playerLocation == this.getLocation()) {
-			return InteractionResult.HIT;
+			speedMultiplier++;
+			return InteractionResult.GET_POINT;
 		}
 		return InteractionResult.NONE;
 	}

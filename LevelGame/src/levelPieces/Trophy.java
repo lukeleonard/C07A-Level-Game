@@ -2,17 +2,17 @@ package levelPieces;
 import gameEngine.Drawable;
 import gameEngine.InteractionResult;
 import levelPieces.GamePiece;
-public class Fire extends GamePiece{
-	private final static char symbol = '~';
+public class Trophy extends GamePiece{
+	private final static char symbol = 'T';
 
-	public Fire(int location) {
+	public Trophy(int location) {
 		super(symbol, location);
 	}
 
 	@Override
 	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
 		if(playerLocation == this.getLocation()) {
-			return InteractionResult.HIT;
+			return InteractionResult.ADVANCE;
 		}
 		return InteractionResult.NONE;
 	}
