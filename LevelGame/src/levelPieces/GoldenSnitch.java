@@ -24,15 +24,14 @@ public class GoldenSnitch extends GamePiece implements Moveable {
 			direction = rand.nextInt(4) - 1;
 		}
 		int tempLanding = (this.getLocation() + speedMultiplier*direction);
-		tempLanding %= (tempLanding % GameEngine.BOARD_SIZE + GameEngine.BOARD_SIZE);
+		tempLanding = tempLanding % (GameEngine.BOARD_SIZE-1);
 		while(gameBoard[tempLanding] != null) {
 			if (direction == 0) {
-				direction = 1;
+				break;
 			}
 			tempLanding += direction;
-			tempLanding %= (tempLanding % GameEngine.BOARD_SIZE + GameEngine.BOARD_SIZE);
+			tempLanding = tempLanding % (GameEngine.BOARD_SIZE-1);
 		}
-		tempLanding %= (tempLanding % GameEngine.BOARD_SIZE + GameEngine.BOARD_SIZE);
 		this.setLocation(tempLanding); 
 		gameBoard[tempLanding] = this;
 		gameBoard[saveLocation] = null;

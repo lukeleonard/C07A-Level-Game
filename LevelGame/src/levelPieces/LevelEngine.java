@@ -45,16 +45,17 @@ public class LevelEngine {
 	}
 	
 	private void level1() {
+		//board[1] = new Tree();
 		for (int i = 0; i < GameEngine.BOARD_SIZE; i+=15) {
 			Ninja tempNinja = new Ninja(i);
 			board[i] = tempNinja;
 			gamePieces.add(tempNinja);
 			moveables.add(tempNinja);
 		}
-		GoldenSnitch tempGS = new GoldenSnitch(13);
-		board[13] = tempGS;
-		gamePieces.add(tempGS);
-		moveables.add(tempGS);
+		//GoldenSnitch tempGS = new GoldenSnitch(13);
+		//board[13] = tempGS;
+		//gamePieces.add(tempGS);
+		//moveables.add(tempGS);
 		
 		/*Trophy tempTrophy = new Trophy(13);
 		board[13] = tempTrophy;

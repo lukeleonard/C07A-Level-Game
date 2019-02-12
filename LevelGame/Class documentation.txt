@@ -1,0 +1,57 @@
+Authors: Luke Leonard, Casey Miller
+
+This is just a brief description of what the code is for.
+for full documentation, look at LevelGameUML
+
+
+Level Engine: this part of the code 
+implements the levels. It tells the 
+levels where things should generate.
+the level engine is important to have 
+the ability to create unique levels to 
+pass to the game engine
+
+Level 1:
+a player has to battle ninjas while chasing after the golden snitch
+
+Level 2: 
+The player has to outsmart a firebreathing dragon to collect the trohpy to win
+
+
+
+Tree: Tree is simply a drawable item.
+ It cannot interact with the player and
+  cannot move
+
+
+
+Golden snitch: golden snitch is a type of 
+coin. You have to catch it twice to move 
+on to the next leveln it utilizes the random
+ function to move sporatically away from the player.
+
+
+
+Ninjas use a simple algorythm to move 
+towards the player. They attack the player
+ at range and can interact to hurt the player
+
+
+
+Dragons do not move however they poses the
+ ability to shoot fire at the player. This 
+ range attack hurts the player while it is on it.
+It uses a similar algorithm as the ninja to 
+target the player
+
+
+
+Fire is a item utilized by dragon that doesnt
+ move but actually is created on the spot to 
+ hit the player.
+
+
+
+Trophys End the game. They are the final prize
+ advancing past the final level. This doesnt 
+ move as it is gaurded by a dragon.

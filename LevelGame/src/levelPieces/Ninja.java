@@ -15,6 +15,7 @@ public class Ninja extends GamePiece implements Moveable {
 	public void move(Drawable[] gameBoard, int playerLocation) {
 		int direction = 0;
 		int saveLocation = this.getLocation();
+		gameBoard[saveLocation] = null;
 		if(playerLocation > this.getLocation()) {
 			direction = 1;
 		} else {
@@ -22,15 +23,13 @@ public class Ninja extends GamePiece implements Moveable {
 		}
 		int tempLanding = (this.getLocation() + 3*direction);
 		
-		tempLanding %= (tempLanding % GameEngine.BOARD_SIZE + GameEngine.BOARD_SIZE);
+		//tempLanding = (tempLanding + GameEngine.BOARD_SIZE) % (GameEngine.BOARD_SIZE);
 		while(gameBoard[tempLanding] != null) {
 			tempLanding += direction;
-			tempLanding %= (tempLanding % GameEngine.BOARD_SIZE + GameEngine.BOARD_SIZE);
 		}
-		tempLanding %= (tempLanding % GameEngine.BOARD_SIZE + GameEngine.BOARD_SIZE);
 		this.setLocation(tempLanding); 
 		gameBoard[tempLanding] = this;
-		gameBoard[saveLocation] = null;
+		
 	}
 
 	@Override
